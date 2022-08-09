@@ -14,7 +14,7 @@ JSX
 */
 // usaremos jsx
 
-const root_saludo = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let people = {
     1:{
@@ -34,46 +34,81 @@ let people = {
     }
 }
 
-function hi(name) {
-    return "hi "+name;
+function people_description() {
+    let descrption = [];
+    for (const id in people) {
+        descrption.push(<div key={id}><h2>hola{people[id].name}</h2>
+                        <p>Age: {people[id].age} sex: {people[id].sex}</p></div>);
+    }
+    return descrption;
+}
+
+function elementHi(name){
+    return <p>hola {name} :0</p>;
 }
 
 function isAdult(){
+    let element = "";
     for (const person in people) {
         if(people[person].age > 18){
-            const element = (
-                <h1>
-                    {hi(people[person].name)} !
-                    <p>como estas:, {people[person].age}</p>
-                </h1>
+            element = (
+                <div>
+                    {elementHi(people[person].name)}!
+                    <span>como estas:, {people[person].age}</span>
+                </div>
             );
-            root_saludo.render(element);
-
         }
     }
+    return element;
 }
-
-// isAdult();
 
 function hiEverybody(){
     let message = "";
     for (const id in people) {
         message += "hi "+people[id].name + "-";
     }
-    return <h2>this is: {message}</h2>
+    return <h2>Saludos a todos: {message}</h2>
 }
 
-root_saludo.render(hiEverybody());
+let singleElement = (
+    <div>
+        <h3>Que tal <span>Recuerda que naciste el {2022 - 21}</span> </h3>
+        <p>Eres una gran person :) {"no rendir"+" ser disciplinado"}</p>
+    </div>
+);
+let element_hi = elementHi("Lucia");
+let elementAdult = isAdult();
+let elementHiEveryBody = hiEverybody();
+
+function FirstComponent(){
+    return(
+        <div className='content'>
+            {elementAdult}
+            {singleElement}
+        </div>
+    );
+}
+
+function SecondComponent(){
+    return(
+        <div className='content'>
+            {element_hi}
+            {elementHiEveryBody}
+        </div>
+    );
+}
+let elementDescription = <div>{people_description()}</div>;
+root.render(elementDescription);
 
 /*
 componentes:
     son funciones que reciben accesorios y devuelven elementos React
     permite dividir la interfas en pequenas partes e independientes
-
 */
-const root_component = ReactDOM.createRoot(document.getElementById('components'));
 
-function Description_component(props){
+const root_component = ReactDOM.createRoot(document.getElementById('root_components'));
+
+function DescriptionComponent(props){
     return (
         <div>
             <p>Hi mi name is {props.name} and i like it</p>
@@ -86,16 +121,66 @@ function Description_component(props){
         );
 }
 
-const element = <Description_component name="martin" game="soccer" music="rock" videoGame="Fornite"/>
+const element = <DescriptionComponent name="martin" game="soccer" music="rock" videoGame="Fornite"/>
 
 function App(){
     return (
         <div>
-            <Description_component name="martin" game="soccer" music="rock" videoGame="Fornite"/>
-            <Description_component name="andres" game="raquet" music="argentic rock" videoGame="Purge"/>
-            <Description_component name="paul" game="volley" music="Punk" videoGame="She"/>
+            <DescriptionComponent name="martin" game="soccer" music="rock" videoGame="Fornite"/>
+            <DescriptionComponent name="andres" game="raquet" music="argentic rock" videoGame="Purge"/>
+            <DescriptionComponent name="paul" game="volley" music="Punk" videoGame="She"/>
         </div>
     );
 }
 
 root_component.render(<App/>)
+
+
+//Se divide un componente en componentes mas pequenos
+function CommentExtraccion1(props){
+    return(
+        <img className="Avatar"
+            src={props.user.avatarUrl}
+            alt={props.user.name}
+        />
+    );
+}
+
+function CommentExtraccion2(props){
+    return(
+        <div className="UserInfo">
+          <CommentExtraccion1 user={props.user}/>
+          <div className="UserInfo-name">
+            {props.user.name}
+          </div>
+        </div>
+    );
+}
+
+function Comment(props) {
+    return (
+      <div className="Comment">
+        <CommentExtraccion2 user={props.author}/>
+        <div className="Comment-text">
+          {props.text}
+        </div>
+      </div>
+    );
+}
+
+
+const comment = {
+    text: 'I hope you enjoy learning React!',
+    author: {
+      name: 'Hello Kitty',
+      avatarUrl: 'http://placekitten.com/g/64/64'
+    }
+};
+
+root_component.render(
+    <Comment
+      text={comment.text}
+      author={comment.author} />
+);
+
+// estados y ciclos de vida
