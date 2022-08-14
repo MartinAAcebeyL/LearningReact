@@ -183,4 +183,99 @@ root_component.render(
       author={comment.author} />
 );
 
+const root_components_class = ReactDOM.createRoot(document.getElementById('root_components_class')); 
+class Nav extends React.Component{
+    render(){
+    let arr1 = [];
+    for (let i=0; i < 3; i++) {
+        arr1.push(<li key={i}>menu {i}</li>)
+    }
+    return (<nav>
+                <ul>
+                    {arr1}                
+                </ul>
+            </nav>)
+    }
+}
+
+root_components_class.render(<Nav/>);
 // estados y ciclos de vida
+
+const root_states = ReactDOM.createRoot(document.getElementById('states'));
+
+class Clock extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {date : new Date()}
+    }
+
+    //metodo, se ejucuta una vez se renderize el componente
+    componentDidMount() {
+        this.timerID = setInterval(
+          () => this.tick(), 1000
+        );
+    }
+
+    //se elimina 
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    //metodo del reloj
+    tick() {
+        this.setState({
+          date: new Date()
+        });
+    }
+
+    render(){
+        return (
+            <div>
+              <h1>Hello, world!</h1>
+              <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+            </div>
+        );
+    }
+}
+
+// root_states.render(<Clock/>)
+
+class ShowNames extends React.Component{
+    constructor(props){
+        super(props);
+        this.names = ['martin', 'andres'];
+        this.surname = ['acebey', 'laime'];
+        this.indice = 0;
+        this.state = {nombres: this.names[this.indice],
+                    apellidos: this.surname[this.indice]
+                }
+    }
+
+    componentDidMount() {
+        this.timerID = setInterval(
+          () => this.tick(), 1000
+        );
+    }
+
+    //se elimina 
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        this.indice++;
+        if(this.indice >= this.names.length)
+            this.indice = 0;
+        
+        this.setState({
+            nombres : this.names[this.indice],
+            apellidos : this.surname[this.indice]
+        });
+    }
+
+    render(){
+        return <h2>Hola {this.state.nombres} - {this.state.apellidos} un gusto</h2>
+    }
+}
+
+root_states.render(<ShowNames/>)
