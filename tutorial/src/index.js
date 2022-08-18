@@ -279,3 +279,31 @@ class ShowNames extends React.Component{
 }
 
 root_states.render(<ShowNames/>)
+
+//eventos
+const root_eventos = ReactDOM.createRoot(document.getElementById('eventos'));
+
+class Evento extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {estado1:"",
+                    estado2:false
+        }
+    }
+    //para evitar el comportamiento predeterminado, que retorne false
+    evitarCP(e){
+        e.preventDefault();
+        console.log('You clicked submit.');
+    }
+
+    render(){
+        return (
+            <form onSubmit={this.evitarCP}>
+              <button type="submit">Submit</button>
+            </form>
+          );
+    }
+
+}
+
+root_eventos.render(<Evento/>)
