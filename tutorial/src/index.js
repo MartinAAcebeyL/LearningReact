@@ -287,23 +287,45 @@ class Evento extends React.Component{
     constructor(props){
         super(props);
         this.state = {estado1:"",
-                    estado2:false
+                    encendido:false
         }
+
+        // Este enlace es necesario para hacer que `this` funcione en el callback
+        this.switchF = this.switchF.bind(this);
     }
+    //on | off 1er evento
+    switchF(){
+        // this.setState(prevState => ({
+        //     encendido: !prevState.encendido
+        //   }));
+        this.setState({encendido: !this.state.encendido})
+    }
+
     //para evitar el comportamiento predeterminado, que retorne false
-    evitarCP(e){
+    evitarComportamientoPredeterminado(e){
         e.preventDefault();
         console.log('You clicked submit.');
     }
 
     render(){
         return (
-            <form onSubmit={this.evitarCP}>
-              <button type="submit">Submit</button>
+            <>
+            <form onSubmit={this.evitarComportamientoPredeterminado}>
+                <button type="submit">Submit</button>
+                
             </form>
+            <button onClick={this.switchF}>
+                {this.state.encendido ? 'ON' : 'OFF'}
+            </button>
+            </>
           );
     }
 
 }
 
 root_eventos.render(<Evento/>)
+/*
+18/8
+Te pasaron la documentacion beta... se le echara un ojo
+Pero se seguira con la documentacion y videos
+*/
