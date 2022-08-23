@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<h1>Hello, world!</h1>);
-
 /*
 JSX
     * no es 1 html ni una cadena
@@ -329,3 +326,73 @@ root_eventos.render(<Evento/>)
 Te pasaron la documentacion beta... se le echara un ojo
 Pero se seguira con la documentacion y videos
 */
+
+
+
+
+//tienda
+const tienda = ReactDOM.createRoot(document.getElementById('tienda'));
+
+let productos = {
+    1:{
+        nombre: "shampo",
+        precio: 15,
+        cantidad:1,
+        unidad:"L",
+        stock:15
+    },
+    2:{
+        nombre: "comida",
+        precio: 20,
+        cantidad:1,
+        unidad:"Kg",
+        stock:50
+
+    },
+    3:{
+        nombre: "correa",
+        precio: 150,
+        stock:5
+    }
+}
+
+function NavShop(props){
+    return <nav>
+        <ul>
+            {
+                props.links.map((element, index) => <li key={index}> {element} </li>)
+            }
+        </ul>
+    </nav>
+}
+
+class Card extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {date : new Date()}
+    }
+
+    render(){
+        let aux = [];
+        let a =0;
+        for (const element in productos) {
+            
+            aux.push(
+                <div key={a}>
+                    <h2> {productos[element].nombre}</h2>
+                </div>
+            )
+            a++;
+        }
+        return <>{aux}</> 
+    }
+}
+
+function AppShop() {
+    return <>
+        <NavShop links={["home", "shop", "contact", "our team"]} />
+        <Card/>
+    </>
+}
+
+tienda.render(<AppShop/>)
