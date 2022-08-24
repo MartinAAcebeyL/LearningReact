@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Prop1 from './components/propiedades';
 import HiComponent from './components/componentes';
+import {ComponenteCondicionalYT} from './components/RenderizadoCondicional';
+import ComponenteCondicionalDC from './components/RenderizadoCondicional';
 
 /*
 JSX
@@ -321,8 +323,12 @@ class Evento extends React.Component{
     }
 
 }
-
-root_eventos.render(<Evento/>)
+let aux =<>
+    <Evento/>
+    <hr/>
+    <ComponenteCondicionalDC/>
+</>
+root_eventos.render(aux)
 /*
 18/8
 Te pasaron la documentacion beta... se le echara un ojo
@@ -338,17 +344,23 @@ class AppYoutube extends React.Component{
     }
 
     render(){
-        return <Prop1
-            cadena="atributo cadena"
-            numero={5}
-            flotante={5.5}
-            booleano={true}
-            array={["i","am","a","array"]}
-            objeto={{nombre:"martin",apellido:"acebey",edad:21}}
-            funcion = {x => x*2}
-            elementoReact={<p>soy un elemento <b>React</b></p>}
-            componenteReact = {<HiComponent name="MArtin andres"/>}
-        />
+        return (
+        <div>
+            <Prop1
+                cadena="atributo cadena"
+                numero={5}
+                flotante={5.5}
+                booleano={true}
+                array={["i","am","a","array"]}
+                objeto={{nombre:"martin",apellido:"acebey",edad:21}}
+                funcion = {x => x*2}
+                elementoReact={<p>soy un elemento <b>React</b></p>}
+                componenteReact = {<HiComponent name="MArtin andres"/>}
+            />
+            <ComponenteCondicionalYT/>
+        </div>
+        )
+        
     }
 }
 
