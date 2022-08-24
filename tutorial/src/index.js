@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Prop1 from './components/propiedades';
+import HiComponent from './components/componentes';
 
 /*
 JSX
@@ -327,9 +329,30 @@ Te pasaron la documentacion beta... se le echara un ojo
 Pero se seguira con la documentacion y videos
 */
 
+// right
+const left = ReactDOM.createRoot(document.getElementById('youtube'));
 
+class AppYoutube extends React.Component{
+    constructor(props){
+        super(props);
+    }
 
+    render(){
+        return <Prop1
+            cadena="atributo cadena"
+            numero={5}
+            flotante={5.5}
+            booleano={true}
+            array={["i","am","a","array"]}
+            objeto={{nombre:"martin",apellido:"acebey",edad:21}}
+            funcion = {x => x*2}
+            elementoReact={<p>soy un elemento <b>React</b></p>}
+            componenteReact = {<HiComponent name="MArtin andres"/>}
+        />
+    }
+}
 
+left.render(<AppYoutube/>)
 //tienda
 const tienda = ReactDOM.createRoot(document.getElementById('tienda'));
 
