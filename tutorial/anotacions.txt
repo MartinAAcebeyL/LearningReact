@@ -1,0 +1,15 @@
+para ser mas duro con los props que se pasa, se instala {prop-types}
+    npm i -s prop-types
+
+
+
+--anotacions
+
+18/8
+Te pasaron la documentacion beta... se le echara un ojo
+Pero se seguira con la documentacion y videos
+
+JSX
+    * no es 1 html ni una cadena
+    * Se usa para crear componentes react
+    * no es obligatorio su uso pero muchos lo hacen, debido a que puede acoplar  

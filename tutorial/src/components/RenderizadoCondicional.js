@@ -62,7 +62,6 @@ export default class ComponenteCondicionalDC extends React.Component{
             button = <Login msg="Documentacion/Login" onClick={this.buttonLogin}/>;
         }
         return <>
-            <h2>Documentacion</h2>
             {button}
         </>
     }

@@ -1,2 +1,0 @@
-para ser mas duro con los props que se pasa, se instala {prop-types}
-    npm i -s prop-types
