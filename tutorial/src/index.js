@@ -5,7 +5,7 @@ import CallElements from './components/elementos';
 import {HiComponent, DocumentationComponentApp, Comment, ClassComponent} from './components/componentes';
 import Prop1 from './components/propiedades';
 import { Clock, ShowNames } from './components/estadoCicloVida';
-import { Evento } from './components/eventos';
+import { Evento, Contador } from './components/eventos';
 import ComponenteCondicionalDC, {ComponenteCondicionalYT} from './components/RenderizadoCondicional';
 
 //tienda
@@ -63,6 +63,7 @@ class AppYoutube extends React.Component{
     render(){
         return (
         <div>
+            <h2 style={{textAlign:"center"}}>propiedades/props</h2>
             <Prop1
                 cadena="atributo cadena"
                 numero={5}
@@ -74,7 +75,13 @@ class AppYoutube extends React.Component{
                 elementoReact={<p>soy un elemento <b>React</b></p>}
                 componenteReact = {<HiComponent name="MArtin andres"/>}
             />
-            <ComponenteCondicionalYT/>
+            <hr/>
+            <h2 style={{textAlign:"center"}}>componentes Condicionales</h2>
+                <ComponenteCondicionalYT/>
+            <hr/>
+            <h2 style={{textAlign:"center"}}>Eventos</h2>
+                <Contador/>
+            <hr/>
         </div>
         )
         

@@ -1,7 +1,40 @@
 import React from "react";
-
 //eventos
 
+//youtube
+class Contador extends React.Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            contador:0 
+        }
+
+        this.sumar  = this.sumar.bind(this);
+        this.restar = this.restar.bind(this);
+    }
+
+    sumar(e){
+        this.setState({
+            contador: this.state.contador + 1 
+        });
+    }
+
+    restar(e){
+        this.setState({
+            contador: this.state.contador - 1 
+        });
+    }
+
+
+    render(){
+        return<>
+            <h2>Constador: <span>{this.state.contador}</span> </h2>
+            <button onClick={this.sumar}>sumar</button>
+            <button onClick={this.restar}>restar</button>
+        </>
+    }
+}
 
 //documentacion
 class Evento extends React.Component{
@@ -44,4 +77,4 @@ class Evento extends React.Component{
 
 }
 
-export {Evento}
+export {Evento, Contador}
