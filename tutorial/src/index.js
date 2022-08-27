@@ -8,6 +8,8 @@ import { Clock, ShowNames } from './components/estadoCicloVida';
 import { Evento, Contador } from './components/eventos';
 import ComponenteCondicionalDC, {ComponenteCondicionalYT} from './components/RenderizadoCondicional';
 import { EmailImput, ReservationForm } from './components/Formularios';
+import { Padre } from './components/ComunicacionComponentes';
+import { Calculator } from './components/LevantandoEstado';
 //tienda
 import Card from './components/store/Card';
 import NavShop from './components/store/Nav'; 
@@ -49,6 +51,10 @@ class App extends React.Component{
                     <EmailImput />
                     <ReservationForm/>
                 <hr />
+                <h2 style={{ textAlign: "center" }}>Levantando Estado</h2>
+                    <Calculator/>
+                <hr/>
+
             </>
         );
     }
@@ -86,7 +92,9 @@ class AppYoutube extends React.Component{
             <h2 style={{textAlign:"center"}}>Eventos</h2>
                 <Contador/>
             <hr/>
-            
+            <h2 style={{ textAlign: "center" }}>Comunicacion entre Componentes</h2>
+                <Padre/>
+            <hr/>
         </div>
         )
         
