@@ -78,3 +78,6 @@ class Evento extends React.Component{
 }
 
 export {Evento, Contador}
+
+//react envuele a todos los eventos con SyntecticCaseEvent que es para dar soprtes a todos los navegadores
+// para ingrizar al evento natico se usa event.nativeEvent

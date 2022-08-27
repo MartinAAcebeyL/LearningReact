@@ -7,7 +7,7 @@ import Prop1 from './components/propiedades';
 import { Clock, ShowNames } from './components/estadoCicloVida';
 import { Evento, Contador } from './components/eventos';
 import ComponenteCondicionalDC, {ComponenteCondicionalYT} from './components/RenderizadoCondicional';
-
+import { EmailImput, ReservationForm } from './components/Formularios';
 //tienda
 import Card from './components/store/Card';
 import NavShop from './components/store/Nav'; 
@@ -45,6 +45,10 @@ class App extends React.Component{
                 <h2 style={{textAlign:'center'}}><b><u>Renderizado Condicional</u></b></h2>
                     <ComponenteCondicionalDC/>
                 <hr/>
+                <h2 style={{ textAlign: "center" }}>Formularios</h2>
+                    <EmailImput />
+                    <ReservationForm/>
+                <hr />
             </>
         );
     }
@@ -82,6 +86,7 @@ class AppYoutube extends React.Component{
             <h2 style={{textAlign:"center"}}>Eventos</h2>
                 <Contador/>
             <hr/>
+            
         </div>
         )
         
