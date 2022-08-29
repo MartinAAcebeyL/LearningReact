@@ -1,5 +1,10 @@
 import React from "react";
 
+const scaleNames = {
+    c: 'Celsius',
+    f: 'Fahrenheit'
+};
+
 function toCelsius(fahrenheit) {
     return (fahrenheit - 32) * 5 / 9;
 }
@@ -16,21 +21,6 @@ function BoilingVerdict(props) {
     return <p>agua NO hervida</p>
 }
 
-const scaleNames = {
-    c: 'Celsius',
-    f: 'Fahrenheit'
-};
-
-function tryConvert(temperature, convert) {
-    const input = parseFloat(temperature);
-    if (Number.isNaN(input)) {
-        return '';
-    }
-    const output = convert(input);
-    const rounded = Math.round(output * 1000) / 1000;
-    return rounded.toString();
-}
-
 class TemperatureInput extends React.Component {
     constructor(props) {
         super(props);
@@ -43,11 +33,11 @@ class TemperatureInput extends React.Component {
 
     render() {
         const temperature = this.props.temperature;
-        const scale = this.props.scale;
+        const scale = scaleNames[this.props.scale];
         return (
             <fieldset>
-                <legend>Enter temperature in {scaleNames[scale]}:</legend>
-                <input value={temperature}
+                <legend>Temperatura en: {scale}:</legend>
+                <input type="number" value={temperature}
                     onChange={this.handleChange} />
             </fieldset>
         );
@@ -59,7 +49,7 @@ class Calculator extends React.Component {
         super(props);
         this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
         this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
-        this.state = { temperature: '', scale: 'c' };
+        this.state = { temperature: 0, scale: 'c' };
     }
 
     handleCelsiusChange(temperature) {
@@ -73,8 +63,8 @@ class Calculator extends React.Component {
     render() {
         const scale = this.state.scale;
         const temperature = this.state.temperature;
-        const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
-        const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+        const celsius    = scale === 'f' ? toCelsius(this.state.temperature): temperature;
+        const fahrenheit = scale === 'c' ? toFahrenheit(this.state.temperature) : temperature;
 
         return (
             <div>

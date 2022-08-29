@@ -15,5 +15,5 @@ JSX
     * no es obligatorio su uso pero muchos lo hacen, debido a que puede acoplar  
 
 
-Terminar
-https://es.reactjs.org/docs/lifting-state-up.html
+Toca
+https://es.reactjs.org/docs/composition-vs-inheritance.html
