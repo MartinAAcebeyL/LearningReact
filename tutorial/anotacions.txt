@@ -15,5 +15,8 @@ JSX
     * no es obligatorio su uso pero muchos lo hacen, debido a que puede acoplar  
 
 
-Toca
+Documentacion
 https://es.reactjs.org/docs/composition-vs-inheritance.html
+
+Youtube
+https://www.youtube.com/watch?v=EEx56EhqztY&list=PLvq-jIkSeTUZ5XcUw8fJPTBKEHEKPMTKk&index=13

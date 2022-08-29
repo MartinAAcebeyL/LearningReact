@@ -10,6 +10,8 @@ import ComponenteCondicionalDC, {ComponenteCondicionalYT} from './components/Ren
 import { EmailImput, ReservationForm } from './components/Formularios';
 import { Padre } from './components/ComunicacionComponentes';
 import { Calculator } from './components/LevantandoEstado';
+import AjaxApis from './components/AjaxApi'; 
+import CicloVida from './components/estadoCicloVida';
 //tienda
 import Card from './components/store/Card';
 import NavShop from './components/store/Nav'; 
@@ -94,6 +96,12 @@ class AppYoutube extends React.Component{
             <hr/>
             <h2 style={{ textAlign: "center" }}>Comunicacion entre Componentes</h2>
                 <Padre/>
+            <hr/>
+            <h2 style={{ textAlign: "center" }}>Ciclo de vida</h2>
+                <CicloVida></CicloVida>
+            <hr />
+            <h2 style={{ textAlign: "center" }}>Ajax apis</h2>
+                <AjaxApis/>
             <hr/>
         </div>
         )
